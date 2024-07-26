@@ -86,6 +86,45 @@ export default function Invoice({ params }) {
                         </p>
                     </div>
                 </div>
+
+                <div className="grid grid-cols-3 mt-3">
+                    <div>
+                        {" "}
+                        <h1 className=" text-gray-400 text-sm mb-4 ">
+                            Invoice Date
+                        </h1>
+                        <p>18 Aug 2021</p>
+                        <h1 className=" text-gray-400 text-sm mb-4  mt-8">
+                            Paymet Due
+                        </h1>
+                        <p>19 Aug 2021</p>
+                    </div>
+                    <div>
+                        <h1 className=" text-gray-400 text-sm mb-4 ">
+                            Bill To
+                        </h1>
+                        <p className="mb-8">Jensen Huang</p>
+
+                        <p className=" font-light  text-gray-400  text-xs">
+                            19 Union Terrace
+                        </p>
+                        <p className=" font-light text-xs text-gray-400">
+                            London
+                        </p>
+                        <p className=" font-light text-xs text-gray-400">
+                            E1 3EZ
+                        </p>
+                        <p className=" font-light text-xs text-gray-400 ">
+                            United Kingdom
+                        </p>
+                    </div>
+                    <div>
+                        <h1 className=" font-light  text-gray-400 text-sm mb-4">
+                            Sent To
+                        </h1>
+                        <p>jensen@mail.com</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
