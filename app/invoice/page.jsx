@@ -16,7 +16,9 @@ import {
 } from "@/components/ui/sheet";
 
 export default async function AllInvoices() {
-    const res = await fetch("http://localhost:3000/api/invoices");
+    const res = await fetch("http://localhost:3000/api/invoices", {
+        cache: "no-store",
+    });
     const data = await res.json();
     return (
         <>

@@ -21,6 +21,10 @@ const InvoiceSchema = new mongoose.Schema({
     paymentTerms: {
         type: String,
     },
+    projectDescription: {
+        type: String,
+        required: [true, "An invoice must have a description"],
+    },
     items: [{ name: String, quantity: Number, price: Number, total: Number }],
     total: Number,
     invoiceId: String,

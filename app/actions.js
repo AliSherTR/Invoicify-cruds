@@ -56,7 +56,7 @@ export async function createInvoice(prevState, data) {
 
         // Save the invoice to the database
         await newInvoice.save();
-        revalidatePath("/invoices");
+        revalidatePath("/invoice");
 
         return { status: "success", message: "Invoice created successfully" };
     } catch (error) {

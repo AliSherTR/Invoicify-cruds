@@ -15,7 +15,7 @@ function formatDate(dateString) {
 
 export default function Invoice({ status, invoice }) {
     return (
-        <Link href={`/invoices/${invoice.invoiceId}`}>
+        <Link href={`/invoice/${invoice._id}`}>
             <div className=" flex items-center justify-between gap-4 py-7 rounded-[10px]  px-4 cursor-pointer hover:border-purple-800 transition-all ease-in-out box-border border border-transparent bg-white dark:bg-[#1e2139] dark:text-white mb-4 ">
                 <p className="text-sm font-semibold flex-1">
                     #{invoice.invoiceId}

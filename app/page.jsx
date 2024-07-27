@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <div className=" flex items-center justify-center min-h-screen bg-transparent gap-5">
             <Link
-                href="/invoices"
+                href="/invoice"
                 className=" underline font-normal text-blue-600"
             >
                 Go to Invoices
