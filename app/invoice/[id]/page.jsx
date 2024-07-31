@@ -9,6 +9,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { formatDate } from "@/lib/utils";
 
 export default async function Invoice({ params }) {
     const { id } = params;
@@ -17,7 +18,9 @@ export default async function Invoice({ params }) {
         cache: "no-store",
     });
 
-    const data = await res.json();
+    const result = await res.json();
+    const data = result.data;
+
     return (
         <div className=" max-w-3xl m-auto">
             <Link href="/invoice" className=" flex items-center gap-3 mb-4">
@@ -105,7 +108,7 @@ export default async function Invoice({ params }) {
                         <h1 className=" text-gray-400 text-sm mb-4 ">
                             Invoice Date
                         </h1>
-                        <p>{data.invoiceDate}</p>
+                        <p>{formatDate(data.invoiceDate)}</p>
                         <h1 className=" text-gray-400 text-sm mb-4  mt-8">
                             Paymet Due
                         </h1>

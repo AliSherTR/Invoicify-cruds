@@ -1,17 +1,9 @@
 import React from "react";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import rightArrow from "../../invoice-app/public/icon-arrow-right.svg";
+import rightArrow from "@/public/icon-arrow-right.svg";
 import Link from "next/link";
-
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    const day = String(date.getUTCDate()).padStart(2, "0");
-    const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Months are zero-based
-    const year = date.getUTCFullYear();
-
-    return `${day}-${month}-${year}`;
-}
+import { formatDate } from "@/lib/utils";
 
 export default function Invoice({ status, invoice }) {
     return (

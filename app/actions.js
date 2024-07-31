@@ -41,6 +41,7 @@ export async function createInvoice(prevState, data) {
                 country: formDataObject.clientCountry,
             },
             paymentTerms: formDataObject.paymentTerms,
+            projectDescription: formDataObject.projectDescription,
             items: formDataObject.itemsList.map((item) => ({
                 name: item.name,
                 quantity: item.quantity,
