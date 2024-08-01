@@ -83,21 +83,21 @@ export default async function Invoice({ params }) {
                             {data.invoiceId}
                         </p>
                         <p className=" font-light text-sm text-gray-400">
-                            Re-branding
+                            {data.projectDescription}
                         </p>
                     </div>
                     <div>
                         <p className=" font-light  text-gray-400  text-xs">
-                            {data.ownerStreeAddress}
+                            {data.ownerAddress.street}
                         </p>
                         <p className=" font-light text-xs text-gray-400">
-                            {data.ownerCity}
+                            {data.ownerAddress.city}
                         </p>
                         <p className=" font-light text-xs text-gray-400">
-                            {data.ownerPostCode}
+                            {data.ownerAddress.postCode}
                         </p>
                         <p className=" font-light text-xs text-gray-400 ">
-                            {data.ownerCountry}
+                            {data.ownerAddress.country}
                         </p>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ export default async function Invoice({ params }) {
                         <h1 className=" text-gray-400 text-sm mb-4 ">
                             Invoice Date
                         </h1>
-                        <p>{formatDate(data.invoiceDate)}</p>
+                        <p>{formatDate(data.createdAt)}</p>
                         <h1 className=" text-gray-400 text-sm mb-4  mt-8">
                             Paymet Due
                         </h1>
@@ -118,26 +118,22 @@ export default async function Invoice({ params }) {
                         <h1 className=" text-gray-400 text-sm mb-4 ">
                             Bill To
                         </h1>
-                        <p className="mb-8">{data.clientName}</p>
-
-                        <p className=" font-light  text-gray-400  text-xs">
-                            19 Union Terrace
+                        <p className="mb-8">{data.client.name}</p>
+                        <p className=" font-light text-xs text-gray-400">
+                            {data.clientAddress.city}
                         </p>
                         <p className=" font-light text-xs text-gray-400">
-                            {data.clientAddress?.city}
-                        </p>
-                        <p className=" font-light text-xs text-gray-400">
-                            {data.clientAddress?.postCode}
+                            {data.clientAddress.postCode}
                         </p>
                         <p className=" font-light text-xs text-gray-400 ">
-                            {data.clientAddress?.country}
+                            {data.clientAddress.country}
                         </p>
                     </div>
                     <div>
                         <h1 className=" font-light  text-gray-400 text-sm mb-4">
                             Sent To
                         </h1>
-                        <p>{data.clientEmail}</p>
+                        <p>{data.client.email}</p>
                     </div>
                 </div>
 
@@ -159,22 +155,26 @@ export default async function Invoice({ params }) {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            <TableRow>
-                                <TableCell className="font-medium">
-                                    Iphone 14 Pro Max
-                                </TableCell>
-                                <TableCell>1</TableCell>
-                                <TableCell>PKR 320,000 </TableCell>
-                                <TableCell className="text-right">
-                                    PKR 320,000
-                                </TableCell>
-                            </TableRow>
+                            {data.items.map((item, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-medium">
+                                        {item.name}
+                                    </TableCell>
+                                    <TableCell>{item.quantity}</TableCell>
+                                    <TableCell>PKR {item.price} </TableCell>
+                                    <TableCell className="text-right">
+                                        {item.total}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
                         </TableBody>
                     </Table>
 
                     <div className=" flex justify-between bg-[#252945] dark:bg-black px-4 py-8 rounded-b-xl text-white">
                         <h1 className=" text-xs  text-gray-400">Amount Due</h1>
-                        <h1 className=" text-xl font-bold ">PKR 320,000</h1>
+                        <h1 className=" text-xl font-bold ">
+                            PKR {data.total}
+                        </h1>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@ export default function AddInvoice() {
         formData.append("clientPostCode", data.clientPostCode.toString());
         formData.append("clientCountry", data.clientCountry);
         const invoiceDate = new Date(data.invoiceDate);
-        formData.append("invoiceDate", invoiceDate.toISOString());
+        formData.append("invoiceDueDate", invoiceDate.toISOString());
         formData.append("paymentTerms", data.paymentTerms);
         formData.append("projectDescription", data.projectDescription);
         const itemListObjects = data.itemList.map((item) => {

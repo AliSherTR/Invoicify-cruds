@@ -26,14 +26,19 @@ export async function createInvoice(prevState, data) {
 
         // Create a new Invoice document using the Mongoose model
         const newInvoice = new Invoice({
-            ownerStreeAddress: formDataObject.ownerStreetAddress,
-            ownerPostCode: formDataObject.ownerPostCode,
-            ownerCity: formDataObject.ownerCity,
-            ownerCountry: formDataObject.ownerCountry,
-            clientName: formDataObject.clientName,
-            clientEmail: formDataObject.clientEmail,
+            ownerAddress: {
+                street: formDataObject.ownerStreetAddress,
+                postCode: formDataObject.ownerPostCode,
+                city: formDataObject.ownerCity,
+                country: formDataObject.ownerCountry,
+            },
+            client: {
+                name: formDataObject.clientName,
+                email: formDataObject.clientEmail,
+            },
             status: "pending", // Default status
-            invoiceDate: new Date(formDataObject.invoiceDate),
+            invoiceDueDate: new Date(formDataObject.invoiceDueDate),
+
             clientAddress: {
                 street: formDataObject.clientStreetAddress,
                 city: formDataObject.clientCity,
@@ -44,12 +49,12 @@ export async function createInvoice(prevState, data) {
             projectDescription: formDataObject.projectDescription,
             items: formDataObject.itemsList.map((item) => ({
                 name: item.name,
-                quantity: item.quantity,
-                price: item.price,
-                total: item.totalPrice,
+                quantity: parseInt(item.quantity, 10),
+                price: parseFloat(item.price),
+                total: parseFloat(item.totalPrice),
             })),
             total: formDataObject.itemsList.reduce(
-                (acc, item) => acc + item.totalPrice,
+                (acc, item) => acc + parseFloat(item.totalPrice),
                 0
             ),
             invoiceId: generateUniqueId(),
