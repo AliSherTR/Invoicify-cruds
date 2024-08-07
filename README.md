@@ -27,6 +27,6 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 ## Landing Page
 
 <div style="display: flex; max-width:800px ; margin: auto; justify-content: space-between;">
-  <img src="images/light-mode.png" alt="Light Mode" style="width: 45%;" />
-  <img src="images/dark-mode.png" alt="Dark Mode" style="width: 45%;" />
+  <img src="images/light-mode.PNG" alt="Light Mode" style="width: 45%;" />
+  <img src="images/dark-mode.PNG" alt="Dark Mode" style="width: 45%;" />
 </div>
