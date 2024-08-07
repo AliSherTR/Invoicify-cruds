@@ -9,7 +9,13 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import {
+    AlertDialog,
+    AlertDialogContent,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { formatDate } from "@/lib/utils";
+import DeleteInvoice from "@/components/DeleteInvoice";
 
 export default async function Invoice({ params }) {
     const { id } = params;
@@ -68,9 +74,20 @@ export default async function Invoice({ params }) {
                     <Button variant="outline" className="rounded-full mx-1">
                         Edit
                     </Button>
-                    <Button variant="destructive" className="rounded-full mx-1">
-                        Delete
-                    </Button>
+
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button
+                                variant="destructive"
+                                className="rounded-full mx-1"
+                            >
+                                Delete
+                            </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <DeleteInvoice invoice_id={data._id} />
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </div>
 

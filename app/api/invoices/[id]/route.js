@@ -18,3 +18,20 @@ export const GET = async (request, { params }) => {
         );
     }
 };
+
+export const DELETE = async (request, { params }) => {
+    const { id } = params;
+    console.log(id);
+    try {
+        await connectDB();
+        const data = await invoice.findByIdAndDelete(id);
+        revalidatePath(`/invoice`);
+        return NextResponse.json({ message: "success", data: data });
+    } catch (error) {
+        // Return an error response
+        return NextResponse.json(
+            { message: "An error occurred", error: error.message },
+            { status: 500 }
+        );
+    }
+};
