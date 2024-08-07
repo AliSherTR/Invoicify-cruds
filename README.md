@@ -27,6 +27,13 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 ## Landing Page
 
 <div style="display: flex;  justify-content: space-between;">
-  <img src="images/light-mode.PNG" alt="Light Mode" style="width: 70%;" />
-  <img src="images/dark-mode.PNG" alt="Dark Mode" style="width: 70%;" />
+  <img src="images/light-mode.PNG" alt="Light Mode" style="width: 60%;" />
+  <img src="images/dark-mode.PNG" alt="Dark Mode" style="width: 60%;" />
+</div>
+
+## Invoices Page
+
+<div style="display: flex;  justify-content: space-between;">
+  <img src="images/invoice-light.PNG" alt="Light Mode" style="width: 60%;" />
+  <img src="images/invoice-dark.PNG" alt="Dark Mode" style="width: 60%;" />
 </div>
