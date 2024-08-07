@@ -1,10 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/SideBar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
     title: "Invoicify",
@@ -14,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={inter.className}>
+            <body>
                 <div className="grid grid-cols-12 bg-transparent overflow-hidden h-screen">
                     <ThemeProvider
                         attribute="class"
