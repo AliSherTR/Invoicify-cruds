@@ -58,7 +58,7 @@ export default function AddInvoice() {
 
         formAction(formData);
 
-        reset();
+        // reset();
     };
 
     const calculateTotal = (index) => {

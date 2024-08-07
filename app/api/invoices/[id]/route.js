@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/db/connectDb";
 import invoice from "@/lib/models/invoice";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
 export const GET = async (request, { params }) => {
@@ -26,7 +27,7 @@ export const DELETE = async (request, { params }) => {
         await connectDB();
         const data = await invoice.findByIdAndDelete(id);
         revalidatePath(`/invoice`);
-        return NextResponse.json({ message: "success", data: data });
+        return NextResponse.json({ message: "success" });
     } catch (error) {
         // Return an error response
         return NextResponse.json(

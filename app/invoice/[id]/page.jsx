@@ -129,7 +129,7 @@ export default async function Invoice({ params }) {
                         <h1 className=" text-gray-400 text-sm mb-4  mt-8">
                             Paymet Due
                         </h1>
-                        <p>19 Aug 2021</p>
+                        <p>{formatDate(data.invoiceDueDate)}</p>
                     </div>
                     <div>
                         <h1 className=" text-gray-400 text-sm mb-4 ">
@@ -178,9 +178,18 @@ export default async function Invoice({ params }) {
                                         {item.name}
                                     </TableCell>
                                     <TableCell>{item.quantity}</TableCell>
-                                    <TableCell>PKR {item.price} </TableCell>
+                                    <TableCell>
+                                        {" "}
+                                        {Intl.NumberFormat("ur-PK", {
+                                            style: "currency",
+                                            currency: "PKR",
+                                        }).format(item.price)}{" "}
+                                    </TableCell>
                                     <TableCell className="text-right">
-                                        {item.total}
+                                        {Intl.NumberFormat("ur-PK", {
+                                            style: "currency",
+                                            currency: "PKR",
+                                        }).format(item.total)}
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -190,7 +199,10 @@ export default async function Invoice({ params }) {
                     <div className=" flex justify-between bg-[#252945] dark:bg-black px-4 py-8 rounded-b-xl text-white">
                         <h1 className=" text-xs  text-gray-400">Amount Due</h1>
                         <h1 className=" text-xl font-bold ">
-                            PKR {data.total}
+                            {Intl.NumberFormat("ur-PK", {
+                                style: "currency",
+                                currency: "PKR",
+                            }).format(data.total)}
                         </h1>
                     </div>
                 </div>

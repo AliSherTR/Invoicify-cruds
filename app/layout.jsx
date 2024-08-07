@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/SideBar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,13 +23,13 @@ export default function RootLayout({ children }) {
                         disableTransitionOnChange
                     >
                         <div className=" lg:col-start-1 lg:col-end-1 col-start-1 col-span-full">
-                        <SideBar />
-
+                            <SideBar />
                         </div>
 
                         <main className="lg:col-start-2 bg-[#f8f8fb] dark:bg-[#141625] col-span-full min-h-screen flex items-center justify-center overflow-auto ">
                             <div className=" max-w-[1200px] m-auto w-full">
                                 {children}
+                                <Toaster />
                             </div>
                         </main>
                     </ThemeProvider>

@@ -9,7 +9,11 @@ import {
     AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
+import { useToast } from "./ui/use-toast";
 export default function DeleteInvoice({ invoice_id }) {
+    const router = useRouter();
+    const { toast } = useToast();
     const handleDeleteInvoice = async () => {
         try {
             const res = await fetch(
@@ -18,7 +22,7 @@ export default function DeleteInvoice({ invoice_id }) {
                     method: "DELETE",
                 }
             );
-            console.log("Invoice deleted successfully:");
+            router.push("/invoice");
         } catch (error) {
             console.error("Error deleting invoice:", error);
         }
@@ -38,10 +42,16 @@ export default function DeleteInvoice({ invoice_id }) {
                 <AlertDialogCancel className="rounded-full">
                     Cancel
                 </AlertDialogCancel>
+
                 <Button
                     variant="destructive"
                     className="rounded-full mx-1"
-                    onClick={handleDeleteInvoice}
+                    onClick={() => {
+                        handleDeleteInvoice();
+                        toast({
+                            description: "Successfully deleted the invoice",
+                        });
+                    }}
                 >
                     Delete
                 </Button>
