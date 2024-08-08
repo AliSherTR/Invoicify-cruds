@@ -4,11 +4,14 @@ import { Button } from "./ui/button";
 import { createInvoice, State } from "@/app/actions";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useFormState, useFormStatus } from "react-dom";
-// import AlertModal from "./AlertModal";
 import { SheetTrigger } from "./ui/sheet.jsx";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddInvoice() {
     const status = useFormStatus();
+
     const [state, formAction] = useFormState(createInvoice, null);
     const {
         register,
@@ -17,6 +20,8 @@ export default function AddInvoice() {
         control,
         formState: { errors },
     } = useForm();
+
+    console.log(state);
 
     useEffect(() => {
         if (!state) {
@@ -57,16 +62,15 @@ export default function AddInvoice() {
         formData.append("itemsList", JSON.stringify(itemListObjects));
 
         formAction(formData);
+        toast.success("Invoice added successfully");
 
-        // reset();
+        reset();
     };
 
     const calculateTotal = (index) => {
         const item = fields[index];
         return item.quantity * item.price;
     };
-
-    // if (state?.status === "success") <AlertModal />;
 
     return (
         <form className="" onSubmit={handleSubmit(onSubmit)}>
@@ -514,11 +518,17 @@ export default function AddInvoice() {
                         type="submit"
                         className="text-center rounded-[20px] py-4 text-sm"
                         disabled={status.pending}
+                        onClick={() =>
+                            toast({
+                                descripton: "Added Invoice Successfully",
+                            })
+                        }
                     >
                         Save & Send
                     </Button>
                 </div>
             </div>
+            <ToastContainer position="bottom-right" theme="dark" />
         </form>
     );
 }
